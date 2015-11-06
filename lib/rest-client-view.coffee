@@ -125,7 +125,7 @@ class RestClientView extends ScrollView
     for m in methods
       $("#{rest_form.method}-#{m}").removeClass('selected')
     $("#{rest_form.method}-#{method.toLowerCase()}").addClass('selected')
-    current_method = method
+    CURRENT_METHOD = method
 
   openInEditor: ->
     textResult = $(rest_form.result).text()
@@ -187,13 +187,13 @@ class RestClientView extends ScrollView
   saveFile: ->
     file_path = dialog.showSaveDialog({properties:['saveFile']})
     outval = {
-      'url':$(rest_form.url).val(),
-      'method': current_method,
-      'headers':$(rest_form.headers).val(),
-      'user_agent':$(rest_form.user_agent).val(),
+      'url': $(rest_form.url).val(),
+      'method': CURRENT_METHOD,
+      'headers': $(rest_form.headers).val(),
+      'user_agent': $(rest_form.user_agent).val(),
       'payload': $(rest_form.payload).val(),
-      'content_type':$(rest_form.content_type).val()
-      };
+      'content_type': $(rest_form.content_type).val()
+    };
 
     fs.writeFile("#{file_path}", JSON.stringify(outval), (err) ->
       if err
