@@ -1,5 +1,7 @@
 {$, ScrollView} = require 'atom-space-pen-views'
 querystring = require 'querystring'
+remote = require 'remote'
+dialog = remote.require 'dialog'
 
 RestClientResponse = require './rest-client-response'
 RestClientEditor = require './rest-client-editor'
